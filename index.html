@@ -10,101 +10,115 @@
     <script defer src="./js/script.js"></script>
   </head>
   <body>
-    <article class="container">
-      <div class="block">
-        <section class="block_item block-item">
-          <h2 class="block-item_title">Do you have account?</h2>
-          <button class="block-item__btn signin_btn">Sign in</button>
-        </section>
-        <section class="block_item bloc-item">
-          <h2 class="block-item_title">You don't have an account?</h2>
-          <button class="block-item__btn signup_btn">Register</button>
-        </section>
+    <!-- <section id="modal">
+      <div class="modal">
+        <ul>
+          <li>login</li>
+          <li>parol</li>
+        </ul>
       </div>
+    </section> -->
+    <div id="body">
+      <article class="container">
+        <div class="block">
+          <section class="block_item block-item">
+            <h2 class="block-item_title">Do you have account?</h2>
+            <button class="block-item__btn signin_btn">Sign in</button>
+          </section>
+          <section class="block_item bloc-item">
+            <h2 class="block-item_title">You don't have an account?</h2>
+            <button class="block-item__btn signup_btn">Register</button>
+          </section>
+        </div>
 
-      <div class="form_box">
-        <!-- login -->
-        <form action="" class="form form_signin">
-          <h3 class="for_title">Login</h3>
-          <p>
-            <input type="text" class="form_input" placeholder="Login" />
-          </p>
-          <p>
-            <input type="password" class="form_input" placeholder="Password" />
-          </p>
-          <p>
-            <button class="form_btn">Sign In</button>
-          </p>
-          <p>
-            <a href="#" class="form_forgot">Having trouble logging in?</a>
-          </p>
-        </form>
-        <!-- form register -->
-        <form action="" class="form form_signup">
-          <h3 class="for_title">Register</h3>
-          <p>
-            <input
-              type="text"
-              class="form_input"
-              placeholder="Login"
-              id="login"
-            />
-          </p>
-          <small id="sml_login"></small>
-          <p>
-            <input
-              type="email"
-              class="form_input"
-              placeholder="Email Address"
-              id="email"
-            />
-          </p>
-          <p>
-            <select name="" id="country" class="form_input">
-              <option value="">Country</option>
-              <option value="arm">Armenia</option>
-              <option value="ru">Russia</option>
-              <option value="usa">USA</option>
-            </select>
-          </p>
-          <p>
-            <input
-              type="phone"
-              class="form_input"
-              placeholder="Phone Number"
-              id="ph_num"
-            />
-          </p>
-          <p>
-            <label for="man">Man</label>
-            <input type="radio" value="man" id="man" name="gender" checked />
-            <label for="woman">Woman</label>
-            <input type="radio" value="woman" id="woman" name="gender" />
-          </p>
-          <p>
-            <input
-              type="password"
-              class="form_input"
-              placeholder="Password"
-              id="password"
-            />
-          </p>
-          <p>
-            <input
-              type="password"
-              class="form_input"
-              placeholder=" Repeat password*"
-              id="confpass"
-            />
-          </p>
-          <p id="error_msg"></p>
-          <p>
-            <button type="button" class="form_btn form_btn_signup" id="reg">
-              Register
-            </button>
-          </p>
-        </form>
-      </div>
-    </article>
+        <div class="form_box">
+          <!-- login -->
+          <form action="" class="form form_signin">
+            <h3 class="for_title">Login</h3>
+            <p>
+              <input type="text" class="form_input" placeholder="Login" />
+            </p>
+            <p>
+              <input
+                type="password"
+                class="form_input"
+                placeholder="Password"
+              />
+            </p>
+            <p>
+              <button class="form_btn">Sign In</button>
+            </p>
+            <p>
+              <a href="#" class="form_forgot">Having trouble logging in?</a>
+            </p>
+          </form>
+          <!-- form register -->
+          <form action="" class="form form_signup">
+            <h3 class="for_title">Register</h3>
+            <p>
+              <input
+                type="text"
+                class="form_input"
+                placeholder="Login"
+                id="login"
+              />
+            </p>
+            <small id="sml_login"></small>
+            <p>
+              <input
+                type="email"
+                class="form_input"
+                placeholder="Email Address"
+                id="email"
+              />
+            </p>
+            <p>
+              <select name="" id="country" class="form_input" required>
+                <option value="">Country</option>
+                <option value="arm">Armenia</option>
+                <option value="ru">Russia</option>
+                <option value="usa">USA</option>
+              </select>
+            </p>
+            <p>
+              <input
+                type="phone"
+                class="form_input"
+                placeholder="Phone Number"
+                id="ph_num"
+              />
+            </p>
+            <p>
+              <label for="man">Man</label>
+              <input type="radio" value="man" id="man" name="gender" checked />
+              <label for="woman">Woman</label>
+              <input type="radio" value="woman" id="woman" name="gender" />
+            </p>
+            <p>
+              <input
+                type="password"
+                class="form_input"
+                placeholder="Password"
+                id="password"
+              />
+            </p>
+            <p>
+              <input
+                type="password"
+                class="form_input"
+                placeholder=" Repeat password*"
+                id="confpass"
+              />
+            </p>
+            <p id="error_msg"></p>
+            <p>
+              <button type="button" class="form_btn form_btn_signup" id="reg">
+                Register
+              </button>
+            </p>
+          </form>
+        </div>
+      </article>
+    </div>
   </body>
 </html>

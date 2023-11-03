@@ -21,20 +21,19 @@ let err_msg = document.querySelector("#error_msg");
 let login = document.querySelector("#login");
 let phone = document.querySelector("#ph_num");
 let smile = document.querySelector("#sml_login");
+let email = document.querySelector("#email");
 
-login.addEventListener("keydown", () => {
-  if (login.value.length <= 1) {
-    smile.innerHTML = "Login must be at least 3 letters";
+login.addEventListener("input", () => {
+  if (login.value.length < 3) {
+    smile.innerHTML = "Login must be at least 3 characters";
     login.style.border = "2px solid red";
     smile.style.color = "red";
-  } else if (login.value.length >= 1) {
+  } else {
     login.style.border = "2px solid green";
     smile.innerHTML = "";
-  } else {
-    smile.innerHTML = "";
-    login.style.border = ""; // Reset the border to its original state
   }
 });
+
 // reg_btn.addEventListener("click", () => {
 //   if (!(pass.value === conf_pass.value)) {
 //     err_msg.innerHTML = "Password doesn't match";
@@ -45,4 +44,4 @@ login.addEventListener("keydown", () => {
 //   console.log(login.value.length);
 // });
 
-console.log(login.value.length);
+console.log(gender);
