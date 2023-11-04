@@ -144,6 +144,10 @@ body.active {
   background-color: #f43648;
 }
 
+.form_btn_signup:disabled {
+  background-color: #f436498e;
+}
+
 .form_forgot {
   color: #333;
 }
