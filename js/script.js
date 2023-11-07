@@ -26,8 +26,6 @@ signUpBtn.addEventListener("click", () => {
   body.classList.add("active");
 });
 
-let gender = document.querySelector("input[name='gender']:checked").value;
-
 // Login validation
 let login = document.querySelector("#login");
 let smile = document.querySelector("#error_login");
@@ -95,7 +93,7 @@ conf_pass.addEventListener("input", () => {
   if (conf_pass.value === pass.value) {
     conf_pass.style.border = border(SUCCES_COLOR);
     error_conf_pass.innerHTML = "";
-    user.pass = pass.value;
+    user.password = pass.value;
   } else {
     conf_pass.style.border = border(ERROR_COLOR);
     error_conf_pass.innerHTML = "Passwords mismatch";
@@ -105,12 +103,12 @@ conf_pass.addEventListener("input", () => {
 
 btn.addEventListener("click", () => {
   modal.style.display = "block";
-  user.gender = gender;
+  user.gender = document.querySelector("input[name='gender']:checked").value;;
   for (const key in user) {
     if (user.hasOwnProperty(key)) {
       const item = user[key];
       const li = document.createElement("li");
-      li.innerHTML = item;
+      li.innerHTML = `Your ${key} - ${item}`;
       user_info.appendChild(li);
     }
   }
