@@ -10,14 +10,6 @@
     <script defer src="./js/script.js"></script>
   </head>
   <body>
-    <!-- <section id="modal">
-      <div class="modal">
-        <ul>
-          <li>login</li>
-          <li>parol</li>
-        </ul>
-      </div>
-    </section> -->
     <div id="body">
       <article class="container">
         <div class="block">
@@ -423,15 +415,22 @@
               />
             </p>
             <small id="error_conf_pass"></small>
-            <p id="error_msg"></p>
             <p>
-              <button type="submit" class="form_btn form_btn_signup" id="reg" disabled>
+              <button type="button" class="form_btn form_btn_signup" id="reg">
                 Register
               </button>
             </p>
           </form>
         </div>
       </article>
+    </div>
+
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <ul id="user_info"></ul>
+      </div>
     </div>
   </body>
 </html>

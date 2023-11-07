@@ -2,14 +2,19 @@ const SUCCES_COLOR = "green";
 const ERROR_COLOR = "red";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const border = (color) => {
-  return `2px solid ${color}`;
-};
-
+const modal = document.querySelector("#myModal");
+const btn = document.querySelector("#reg");
+const span = document.getElementsByClassName("close")[0];
 const signInBtn = document.querySelector(".signin_btn");
 const signUpBtn = document.querySelector(".signup_btn");
 const formBox = document.querySelector(".form_box");
+const user_info = document.querySelector("#user_info");
 const body = document.body;
+const user = {};
+
+const border = (color) => {
+  return `2px solid ${color}`;
+};
 
 signInBtn.addEventListener("click", () => {
   formBox.classList.remove("active");
@@ -21,7 +26,6 @@ signUpBtn.addEventListener("click", () => {
   body.classList.add("active");
 });
 
-let reg_btn = document.querySelector("#reg");
 let gender = document.querySelector("input[name='gender']:checked").value;
 
 // Login validation
@@ -35,6 +39,7 @@ login.addEventListener("input", () => {
   } else {
     login.style.border = border(SUCCES_COLOR);
     smile.innerHTML = "";
+    user.login = login.value;
   }
 });
 
@@ -50,6 +55,7 @@ phone.addEventListener("input", () => {
   } else {
     phone.style.border = border(SUCCES_COLOR);
     error_phone.innerHTML = "";
+    user.phone = phone.value;
   }
 });
 
@@ -60,6 +66,7 @@ email.addEventListener("input", () => {
   if (EMAIL_REGEX.test(email.value)) {
     email.style.border = border(SUCCES_COLOR);
     error_email.innerHTML = "";
+    user.email = email.value;
   } else {
     email.style.border = border(ERROR_COLOR);
     error_email.innerHTML = "The Email isn`t correct";
@@ -88,6 +95,7 @@ conf_pass.addEventListener("input", () => {
   if (conf_pass.value === pass.value) {
     conf_pass.style.border = border(SUCCES_COLOR);
     error_conf_pass.innerHTML = "";
+    user.pass = pass.value;
   } else {
     conf_pass.style.border = border(ERROR_COLOR);
     error_conf_pass.innerHTML = "Passwords mismatch";
@@ -95,19 +103,24 @@ conf_pass.addEventListener("input", () => {
   }
 });
 
+btn.addEventListener("click", () => {
+  modal.style.display = "block";
+  user.gender = gender;
+  for (const key in user) {
+    if (user.hasOwnProperty(key)) {
+      const item = user[key];
+      const li = document.createElement("li");
+      li.innerHTML = item;
+      user_info.appendChild(li);
+    }
+  }
+});
 
-
-
-
-let err_msg = document.querySelector("#error_msg");
-// reg_btn.addEventListener("click", () => {
-//   if (!(pass.value === conf_pass.value)) {
-//     err_msg.innerHTML = "Password doesn't match";
-//   } else {
-//     err_msg.innerHTML = "";
-//   }
-
-//   console.log(login.value.length);
-// });
-
-console.log(gender);
+span.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
