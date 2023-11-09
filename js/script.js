@@ -9,7 +9,7 @@ const signInBtn = document.querySelector(".signin_btn");
 const signUpBtn = document.querySelector(".signup_btn");
 const formBox = document.querySelector(".form_box");
 const user_info = document.querySelector("#user_info");
-const body = document.body;
+const body = document.querySelector("#art_bd");
 const user = {};
 
 const border = (color) => {
@@ -100,10 +100,10 @@ conf_pass.addEventListener("input", () => {
     error_conf_pass.style.color = ERROR_COLOR;
   }
 });
-
+// Modal
 btn.addEventListener("click", () => {
   modal.style.display = "block";
-  user.gender = document.querySelector("input[name='gender']:checked").value;;
+  user.gender = document.querySelector("input[name='gender']:checked").value;
   for (const key in user) {
     if (user.hasOwnProperty(key)) {
       const item = user[key];
@@ -121,4 +121,23 @@ window.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.style.display = "none";
   }
+});
+
+// Password
+
+let viewEye = document.querySelector(".view_eye");
+let hideEye = document.querySelector(".hide_eye");
+
+viewEye.addEventListener("click", () => {
+  if ((pass.type = "password")) {
+    pass.type = String;
+    viewEye.style.display = "none";
+    hideEye.style.display = "block";
+  } else {
+  }
+});
+hideEye.addEventListener("click", () => {
+  pass.type = "password";
+  viewEye.style.display = "block";
+  hideEye.style.display = "none";
 });
