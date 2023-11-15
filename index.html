@@ -30,14 +30,18 @@
             <p>
               <input type="text" class="form_input" placeholder="Login" />
             </p>
-            <p>
+            <div class="box_eye">
               <input
                 type="password"
                 class="form_input"
                 placeholder="Password"
+                id="log_password"
                 required
               />
-            </p>
+              <img class="log_view_eye" src="./img/icons/view.png" alt="view" />
+              <img class="log_hide_eye" src="./img/icons/hide.png" alt="hide" />
+            </div>
+
             <p>
               <button class="form_btn">Sign In</button>
             </p>
@@ -395,7 +399,8 @@
               <label for="woman">Woman</label>
               <input type="radio" value="woman" id="woman" name="gender" />
             </p>
-            <p>
+
+            <div class="box_eye">
               <input
                 type="password"
                 class="form_input"
@@ -405,7 +410,8 @@
               />
               <img class="view_eye" src="./img/icons/view.png" alt="view" />
               <img class="hide_eye" src="./img/icons/hide.png" alt="hide" />
-            </p>
+            </div>
+
             <small id="error_pass"></small>
             <p>
               <input

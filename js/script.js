@@ -125,19 +125,37 @@ window.addEventListener("click", (event) => {
 
 // Password
 
-let viewEye = document.querySelector(".view_eye");
-let hideEye = document.querySelector(".hide_eye");
+const viewEye = document.querySelector(".view_eye");
+const hideEye = document.querySelector(".hide_eye");
 
 viewEye.addEventListener("click", () => {
-  if ((pass.type = "password")) {
-    pass.type = String;
+  if (pass.type === "password") {
+    pass.type = "text";
     viewEye.style.display = "none";
     hideEye.style.display = "block";
-  } else {
   }
 });
+
 hideEye.addEventListener("click", () => {
   pass.type = "password";
   viewEye.style.display = "block";
   hideEye.style.display = "none";
+});
+
+const log_viewEye = document.querySelector(".log_view_eye");
+const log_hideEye = document.querySelector(".log_hide_eye");
+const log_password = document.querySelector("#log_password");
+
+log_viewEye.addEventListener("click", () => {
+  if (log_password.type === "password") {
+    log_password.type = "text";
+    log_viewEye.style.display = "none";
+    log_hideEye.style.display = "block";
+  }
+});
+
+log_hideEye.addEventListener("click", () => {
+  log_password.type = "password";
+  log_viewEye.style.display = "block";
+  log_hideEye.style.display = "none";
 });

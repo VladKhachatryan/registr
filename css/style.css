@@ -153,15 +153,27 @@ body {
 }
 
 /* password */
+.log_view_eye,
 .view_eye {
   position: absolute;
   padding: 10px;
+  cursor: pointer;
+  right: 0;
 }
 
+.log_hide_eye,
 .hide_eye {
   display: none;
   position: absolute;
   padding: 10px;
+  cursor: pointer;
+  right: 0;
+}
+
+.box_eye {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 /* Media */
 @media (max-width: 992px) {
