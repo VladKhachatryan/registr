@@ -26,6 +26,20 @@ signUpBtn.addEventListener("click", () => {
   body.classList.add("active");
 });
 
+function allValid() {
+  return (
+    user.login &&
+    user.phone &&
+    user.email &&
+    user.password &&
+    conf_pass.value === pass.value
+  );
+}
+
+function updateBtnStatus() {
+  btn.disabled = !allValid();
+}
+
 // Login validation
 let login = document.querySelector("#login");
 let smile = document.querySelector("#error_login");
@@ -39,6 +53,7 @@ login.addEventListener("input", () => {
     smile.innerHTML = "";
     user.login = login.value;
   }
+  updateBtnStatus();
 });
 
 // Phone validation
@@ -55,6 +70,7 @@ phone.addEventListener("input", () => {
     error_phone.innerHTML = "";
     user.phone = phone.value;
   }
+  updateBtnStatus();
 });
 
 // Email validation
@@ -70,6 +86,7 @@ email.addEventListener("input", () => {
     error_email.innerHTML = "The Email isn`t correct";
     error_email.style.color = ERROR_COLOR;
   }
+  updateBtnStatus();
 });
 
 // Password validation
@@ -84,6 +101,7 @@ pass.addEventListener("input", () => {
     pass.style.border = border(SUCCES_COLOR);
     error_pass.innerHTML = "";
   }
+  updateBtnStatus();
 });
 
 // Confirm password
@@ -99,7 +117,9 @@ conf_pass.addEventListener("input", () => {
     error_conf_pass.innerHTML = "Passwords mismatch";
     error_conf_pass.style.color = ERROR_COLOR;
   }
+  updateBtnStatus();
 });
+
 // Modal
 btn.addEventListener("click", () => {
   modal.style.display = "block";
@@ -117,6 +137,7 @@ btn.addEventListener("click", () => {
 span.addEventListener("click", () => {
   modal.style.display = "none";
 });
+
 window.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.style.display = "none";
