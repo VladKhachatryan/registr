@@ -10,11 +10,32 @@ const signUpBtn = document.querySelector(".signup_btn");
 const formBox = document.querySelector(".form_box");
 const user_info = document.querySelector("#user_info");
 const body = document.querySelector("#art_bd");
+const viewEye = document.querySelector(".view_eye");
+const hideEye = document.querySelector(".hide_eye");
+const log_viewEye = document.querySelector(".log_view_eye");
+const log_hideEye = document.querySelector(".log_hide_eye");
+const log_password = document.querySelector("#log_password");
 const user = {};
 
 const border = (color) => {
   return `2px solid ${color}`;
 };
+
+function showPass(show, hide, element) {
+  show.addEventListener("click", () => {
+    if (element.type === "password") {
+      element.type = "text";
+      show.style.display = "none";
+      hide.style.display = "block";
+    }
+  });
+
+  hide.addEventListener("click", () => {
+    element.type = "password";
+    show.style.display = "block";
+    hide.style.display = "none";
+  });
+}
 
 signInBtn.addEventListener("click", () => {
   formBox.classList.remove("active");
@@ -41,8 +62,8 @@ function updateBtnStatus() {
 }
 
 // Login validation
-let login = document.querySelector("#login");
-let smile = document.querySelector("#error_login");
+const login = document.querySelector("#login");
+const smile = document.querySelector("#error_login");
 login.addEventListener("input", () => {
   if (login.value.length < 3) {
     smile.innerHTML = "Login must be at least 3 characters";
@@ -57,8 +78,8 @@ login.addEventListener("input", () => {
 });
 
 // Phone validation
-let phone = document.querySelector("#ph_num");
-let error_phone = document.querySelector("#error_phone");
+const phone = document.querySelector("#ph_num");
+const error_phone = document.querySelector("#error_phone");
 phone.addEventListener("input", () => {
   if (phone.value.length < 6 || phone.value.length > 9) {
     phone.style.border = border(ERROR_COLOR);
@@ -74,8 +95,8 @@ phone.addEventListener("input", () => {
 });
 
 // Email validation
-let email = document.querySelector("#email");
-let error_email = document.querySelector("#error_email");
+const email = document.querySelector("#email");
+const error_email = document.querySelector("#error_email");
 email.addEventListener("input", () => {
   if (EMAIL_REGEX.test(email.value)) {
     email.style.border = border(SUCCES_COLOR);
@@ -90,8 +111,8 @@ email.addEventListener("input", () => {
 });
 
 // Password validation
-let pass = document.querySelector("#password");
-let error_pass = document.querySelector("#error_pass");
+const pass = document.querySelector("#password");
+const error_pass = document.querySelector("#error_pass");
 pass.addEventListener("input", () => {
   if (pass.value.length < 6 || pass.value.length > 12) {
     pass.style.border = border(ERROR_COLOR);
@@ -105,8 +126,8 @@ pass.addEventListener("input", () => {
 });
 
 // Confirm password
-let conf_pass = document.querySelector("#confpass");
-let error_conf_pass = document.querySelector("#error_conf_pass");
+const conf_pass = document.querySelector("#confpass");
+const error_conf_pass = document.querySelector("#error_conf_pass");
 conf_pass.addEventListener("input", () => {
   if (conf_pass.value === pass.value) {
     conf_pass.style.border = border(SUCCES_COLOR);
@@ -122,7 +143,8 @@ conf_pass.addEventListener("input", () => {
 
 // Modal
 btn.addEventListener("click", () => {
-  modal.style.display = "block";
+  modal.style.display = "grid";
+
   user.gender = document.querySelector("input[name='gender']:checked").value;
   for (const key in user) {
     if (user.hasOwnProperty(key)) {
@@ -134,49 +156,32 @@ btn.addEventListener("click", () => {
   }
 });
 
+function clearUserObj() {
+  for (const key in user) {
+    if (user.hasOwnProperty(key)) {
+      user[key].delete;
+    }
+  }
+  clearUserInfo();
+}
+
+function clearUserInfo() {
+  while (user_info.firstChild) {
+    user_info.removeChild(user_info.firstChild);
+  }
+}
+
 span.addEventListener("click", () => {
   modal.style.display = "none";
+  clearUserObj();
 });
 
 window.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.style.display = "none";
+    clearUserObj();
   }
 });
 
-// Password
-
-const viewEye = document.querySelector(".view_eye");
-const hideEye = document.querySelector(".hide_eye");
-
-viewEye.addEventListener("click", () => {
-  if (pass.type === "password") {
-    pass.type = "text";
-    viewEye.style.display = "none";
-    hideEye.style.display = "block";
-  }
-});
-
-hideEye.addEventListener("click", () => {
-  pass.type = "password";
-  viewEye.style.display = "block";
-  hideEye.style.display = "none";
-});
-
-const log_viewEye = document.querySelector(".log_view_eye");
-const log_hideEye = document.querySelector(".log_hide_eye");
-const log_password = document.querySelector("#log_password");
-
-log_viewEye.addEventListener("click", () => {
-  if (log_password.type === "password") {
-    log_password.type = "text";
-    log_viewEye.style.display = "none";
-    log_hideEye.style.display = "block";
-  }
-});
-
-log_hideEye.addEventListener("click", () => {
-  log_password.type = "password";
-  log_viewEye.style.display = "block";
-  log_hideEye.style.display = "none";
-});
+showPass(viewEye, hideEye, pass);
+showPass(log_viewEye, log_hideEye, log_password);
